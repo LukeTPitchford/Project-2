@@ -1,0 +1,29 @@
+{
+  "name": "highgear-ex1",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
+    "@mapbox/search-js-react": "^1.0.0-beta.14",
+    "mapbox-gl": "^2.13.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-native-dotenv": "^3.4.8"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "vite": "^4.2.0"
+  },
+  "main": "vite.config.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
