@@ -5,6 +5,7 @@ import { AddressAutofill } from "@mapbox/search-js-react";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import Geolocation from "@mapbox/mapbox-gl-geocoder/lib/geolocation";
 import { dataGeo } from "./data.js";
+import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions"
 mapboxgl.accessToken = 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g';
 
 const Map = () => {
@@ -13,37 +14,44 @@ const Map = () => {
     const [lat, setLat] = useState(51.0453809);
     const [zoom, setZoom] = useState(10);
     const [title, setTitle] = useState("Park n' Bike");
-    const geoCoder = new MapboxGeocoder({
-        accessToken: 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g',
-        mapboxgl: mapboxgl,
-        marker: {
-            color: "orange",
 
-        }
-    });
-    const geoCoderTwo = new MapboxGeocoder({
-        accessToken: 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g',
-        mapboxgl: mapboxgl,
-        marker: {
-            color: "orange",
 
-        }
-    });
+
+
+
+    // const geoCoder = new MapboxGeocoder({
+    //     accessToken: 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g',
+    //     mapboxgl: mapboxgl,
+    //     marker: {
+    //         color: "orange",
+
+    //     }
+    // });
+    // const geoCoderTwo = new MapboxGeocoder({
+    //     accessToken: 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g',
+    //     mapboxgl: mapboxgl,
+    //     marker: {
+    //         color: "orange",
+
+    //     }
+    // });
+
+    
     // "This puts the name, long and lat above the map"
     useEffect(() => {
-        geoCoder.on("result", function (results) {
-            console.log(results.result.place_name);
-            // setTitle(results.result.place_name);
-            // setLng(results.result.center[0]);
-            // setLat(results.result.center[1]);
-            //   setZoom(13);
-        });
+        // geoCoder.on("result", function (results) {
+        //     console.log(results.result.place_name);
+        //     // setTitle(results.result.place_name);
+        //     // setLng(results.result.center[0]);
+        //     // setLat(results.result.center[1]);
+        //     //   setZoom(13);
+        // });
 
-        const search = new MapboxSearchBox();
-search.accessToken = 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g';
+//         const search = new MapboxSearchBox();
+// search.accessToken = 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g';
 
-const searchTwo = new MapboxSearchBox();
-searchTwo.accessToken = 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g';
+// const searchTwo = new MapboxSearchBox();
+// searchTwo.accessToken = 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g';
 
         // if (map.current) return; // initialize map only once
         const map = new mapboxgl.Map({
@@ -53,8 +61,15 @@ searchTwo.accessToken = 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85
             center: [lng, lat],
             zoom: zoom,
         })
-        .addControl(geoCoder)
-        .addControl(geoCoderTwo)
+        // .addControl(geoCoder)
+        .addControl("top-left")
+        // .addControl(geoCoderTwo)
+
+        map.addControl(new MapboxDirections({
+            accessToken: "pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g",
+            unit: 'metric',
+            profile: 'mapbox/driving'
+        }), "top-left");
         
             // .addControl(
             //     new mapboxgl.GeolocateControl({
