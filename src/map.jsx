@@ -70,6 +70,8 @@ const Map = () => {
             unit: 'metric',
             profile: 'mapbox/driving'
         }), "top-left");
+
+        
         
             // .addControl(
             //     new mapboxgl.GeolocateControl({
@@ -83,6 +85,8 @@ const Map = () => {
             //         showUserLocation: true,
             //     })
             // );
+
+        
         for (let i = 0; i < dataGeo.features.length; i++) {
             new mapboxgl.Marker({
                 color: "#FFFFFF"
