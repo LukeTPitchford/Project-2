@@ -1,19 +1,19 @@
 #root {
-  width: 100%;
-  height: 100%;
+  width: 90vw;
+  height: 90vh;
   margin: auto;
-  padding: 2rem;
-  /* text-align: center; */
+  position: center;
 }
 
 .map-container {
-  /* display: flex; */
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -30px;
+  display: flex;
+  /* margin-left: auto;
+  margin-right: auto; */
+  /* margin-top: -65px; */
+  margin: auto;
   position: center;
-  width: 100%;
-  height: 80vh;
+  width: 90vw;
+  height: 90vh;
 }
 
 #address {
@@ -106,7 +106,7 @@
   padding: 0;
   position: absolute;
   width: 100%;
-  top: 110%;
+  top: 100%;
   /* fallback */
   top: calc(100% + 6px);
   z-index: 1000;

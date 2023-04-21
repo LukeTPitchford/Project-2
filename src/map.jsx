@@ -14,7 +14,6 @@ const Map = () => {
     const [lng, setLng] = useState(-114.0719);
     const [lat, setLat] = useState(51.0447);
     const [zoom, setZoom] = useState(11.5);
-    const [title, setTitle] = useState("Park n' Bike");
     const geoCoder = new MapboxGeocoder({
         accessToken: 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g',
         placeholder: 'Home',
@@ -53,18 +52,16 @@ const Map = () => {
     .addControl(geoCoder)
     .addControl(geoCoderTwo)
     
-        // .addControl(
-        //     new mapboxgl.GeolocateControl({
-        //         positionOptions: {
-        //             enableHighAccuracy: true,
-        //         },
-        //         // When active the map will receive updates to the device's location as it changes.
-        //         trackUserLocation: true,
-        //         // Draw an arrow next to the location dot to indicate which direction the device is heading.
-        //         showUserHeading: true,
-        //         showUserLocation: true,
-        //     })
-        // );
+        .addControl(
+            new mapboxgl.GeolocateControl({
+                positionOptions: {
+                    enableHighAccuracy: true,
+                },
+                trackUserLocation: true,
+                showUserHeading: true,
+                showUserLocation: true,
+            })
+        );
     for (let i = 0; i < bikeParkingLocations.features.length; i++) {
         new mapboxgl.Marker({
             color: 'green'
