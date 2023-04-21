@@ -5,6 +5,7 @@ import { AddressAutofill } from "@mapbox/search-js-react";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import Geolocation from "@mapbox/mapbox-gl-geocoder/lib/geolocation";
 import { bikeParkingLocations } from "./data.js";
+import { parkNBikeLocations } from "./data.js";
 mapboxgl.accessToken = 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g';
 
 const Map = () => {
@@ -66,30 +67,31 @@ const Map = () => {
         // );
     for (let i = 0; i < bikeParkingLocations.features.length; i++) {
         new mapboxgl.Marker({
-            color: "#FFFFFF"
-        }).setLngLat([bikeParkingLocations.features[i].geometry.coordinates[0], bikeParkingLocations.features[i].geometry.coordinates[1]]).addTo(map);
-        console.log(bikeParkingLocations.features[i].geometry.coordinates);
+            color: 'green'
+    })
+        .setLngLat([bikeParkingLocations.features[i].geometry.coordinates[0], bikeParkingLocations.features[i].geometry.coordinates[1]])
+        .addTo(map);
+    }
+
+    for (let i = 0; i < parkNBikeLocations.features.length; i++) {
+        new mapboxgl.Marker({
+            color: 'black'
+    })
+        .setLngLat([parkNBikeLocations.features[i].geometry.coordinates[0], parkNBikeLocations.features[i].geometry.coordinates[1]])
+        .addTo(map);
     }
 
     }, []);
 
     return (
         <div className="data">
-            {" "}
-            {/* <h1>{title}</h1> */}
             <div ref={mapContainer} className="map-container" />
             <div>
                 <form>
-                    
                 </form>
             </div>
         </div>
     );
 };
-
-// function select() {
-//     console.log("first");
-// }
-
 
 export default Map;

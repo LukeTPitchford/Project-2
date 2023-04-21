@@ -10,9 +10,10 @@
   /* display: flex; */
   margin-left: auto;
   margin-right: auto;
+  margin-top: -30px;
   position: center;
   width: 100%;
-  height: 100%;
+  height: 80vh;
 }
 
 #address {
@@ -277,4 +278,13 @@
 
   .mapboxgl-ctrl-geocoder--powered-by {
     font-size: 11px !important;
+  }
+
+  .marker {
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width: 46px;
+    background-image: url('https://s3.amazonaws.com/media.freshgigs.ca/company_logos/2296/details/CPA_logo_-no-background.png?w=10');
+    background-size: 46px;
   }
