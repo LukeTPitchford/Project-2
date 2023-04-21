@@ -6,6 +6,7 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import Geolocation from "@mapbox/mapbox-gl-geocoder/lib/geolocation";
 import { bikeParkingLocations } from "./data.js";
 import { parkNBikeLocations } from "./data.js";
+import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions"
 mapboxgl.accessToken = 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g';
 
 const Map = () => {
@@ -14,34 +15,35 @@ const Map = () => {
     const [lng, setLng] = useState(-114.0719);
     const [lat, setLat] = useState(51.0447);
     const [zoom, setZoom] = useState(11.5);
+
     const geoCoder = new MapboxGeocoder({
         accessToken: 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g',
-        placeholder: 'Home',
-        mapboxgl: mapboxgl,
-        marker: {
-            color: "orange",
-        }
+    //     placeholder: 'Home',
+    //     mapboxgl: mapboxgl,
+    //     marker: {
+    //         color: "orange",
+        // }
     });
 
-    const geoCoderTwo = new MapboxGeocoder({
-        accessToken: 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g',
-        placeholder: 'Work',
-        mapboxgl: mapboxgl,
-        marker: {
-            color: "orange",
-        }
-    });
+    // const geoCoderTwo = new MapboxGeocoder({
+    //     accessToken: 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g',
+    //     placeholder: 'Work',
+    //     mapboxgl: mapboxgl,
+    //     marker: {
+    //         color: "orange",
+    //     }
+    // });
 
     useEffect(() => {
-        geoCoder.on("result", function (results) {
-            console.log(results.result.place_name);
-        });
+        // geoCoder.on("result", function (results) {
+        //     console.log(results.result.place_name);
+        // });
 
-    const search = new MapboxSearchBox();
-        search.accessToken = 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g';
+    // const search = new MapboxSearchBox();
+    //     search.accessToken = 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g';
 
-    const searchTwo = new MapboxSearchBox();
-        searchTwo.accessToken = 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g';
+    // const searchTwo = new MapboxSearchBox();
+    //     searchTwo.accessToken = 'pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g';
 
     const map = new mapboxgl.Map({
         container: mapContainer.current,
@@ -49,19 +51,28 @@ const Map = () => {
         center: [lng, lat],
         zoom: zoom,
     })
-    .addControl(geoCoder)
-    .addControl(geoCoderTwo)
+    // .addControl(geoCoder)
+    // .addControl(geoCoderTwo)
+
+    // .addControl("top-left")
+
+    map.addControl(new MapboxDirections({
+        accessToken: "pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g",
+        unit: 'metric',
+        profile: 'mapbox/driving'
+    }), "top-left");
+
     
-        .addControl(
-            new mapboxgl.GeolocateControl({
-                positionOptions: {
-                    enableHighAccuracy: true,
-                },
-                trackUserLocation: true,
-                showUserHeading: true,
-                showUserLocation: true,
-            })
-        );
+        // .addControl(
+        //     new mapboxgl.GeolocateControl({
+        //         positionOptions: {
+        //             enableHighAccuracy: true,
+        //         },
+                // trackUserLocation: true,
+                // showUserHeading: true,
+                // showUserLocation: true,
+        //     })
+        // );
     for (let i = 0; i < bikeParkingLocations.features.length; i++) {
         new mapboxgl.Marker({
             color: 'green'
