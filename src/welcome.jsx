@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import DirectionsIcon from '@mui/icons-material/Directions';
 
 
-function App() {
+export default function Welcome() {
     return (
     <div className="App">
       <div className="card">
@@ -55,7 +55,7 @@ function App() {
           />
         </Box>
       </Box>
-      <Button variant="contained" endIcon={<DirectionsIcon />}>
+      <Button variant="contained" endIcon={<DirectionsIcon />} href={`/map`}>
           Generate route
       </Button>
       <p>
