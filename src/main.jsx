@@ -5,8 +5,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css';
+import './App.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
-
 import Map from './map';
 import Welcome from './welcome';
 

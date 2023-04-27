@@ -7,12 +7,37 @@ import WorkIcon from '@mui/icons-material/Work';
 import Button from '@mui/material/Button';
 import DirectionsIcon from '@mui/icons-material/Directions';
 import CssBaseline from '@mui/material/CssBaseline';
-import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import InputAdornment from '@mui/material/InputAdornment';
+import { SearchBox } from '@mapbox/search-js-react';
 
+function InputHome() {
+  return (
+      <SearchBox
+        accessToken="pk.eyJ1Ijoib2xseXNhbW0iLCJhIjoiY2xnNDhkNnBuMDNzMjNtcDdhdzFqcG9hNiJ9.06D2Ws_Figfp6Fg4neZSHA"
+        options={{
+          language: 'en',
+          country: 'CA',
+          proximity: '-114.0719,51.0447',
+          }}
+      >
+        </SearchBox>
+  );
+}
 
+function InputWork() {
+  return (
+      <SearchBox 
+        accessToken="pk.eyJ1Ijoib2xseXNhbW0iLCJhIjoiY2xnNDhkNnBuMDNzMjNtcDdhdzFqcG9hNiJ9.06D2Ws_Figfp6Fg4neZSHA"
+        options={{
+          language: 'en',
+          country: 'CA',
+          proximity: '-114.0719,51.0447',
+          }}
+      >
+        </SearchBox>
+  );
+}
 
 function Copyright(props) {
     return (
@@ -24,7 +49,7 @@ function Copyright(props) {
     );
   }
 
-export default function SignIn() {
+export default function getAddresses() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -55,46 +80,25 @@ export default function SignIn() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            margin: 6,
+            margin: 5
           }}
         >
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" sx={{ padding: 1 }}>
             Ready to Ride?
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <HomeIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="home-address" 
-              label="Home Address"
-              name="Home Address"
-              autoComplete="street-address"
-              autoFocus
-              variant="filled"
-            />
+            <Box sx={{ display: 'flex', alignItems: 'center', padding: 1 }}>
+              <HomeIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+              <InputHome />
+            </ Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', padding: 1 }}>
+              <WorkIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+              <InputWork />
             </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <WorkIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="street-address"
-              variant="filled"
-            />
-          </Box>
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              href={`/map`}
               sx={{ mt: 3, mb: 2 }}
               endIcon={<DirectionsIcon />}
             >
@@ -103,7 +107,6 @@ export default function SignIn() {
           </Box>
           <Copyright />
         </Box>
-
       </Container>
   );
 }
