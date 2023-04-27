@@ -6,131 +6,104 @@ import HomeIcon from '@mui/icons-material/Home';
 import WorkIcon from '@mui/icons-material/Work';
 import Button from '@mui/material/Button';
 import DirectionsIcon from '@mui/icons-material/Directions';
+import CssBaseline from '@mui/material/CssBaseline';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import InputAdornment from '@mui/material/InputAdornment';
 
 
-export default function Welcome() {
+
+function Copyright(props) {
     return (
-    <div className="App">
-      <div className="card">
-      <h1>Ready to ride?</h1>
-      <Box sx={{ '& > :not(style)': { m: 1 } }}>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <HomeIcon sx={{ color: 'black', mr: 1, my: 0.5 }} />
-          <TextField 
-          fullWidth
-          required
-          id="home-address" 
-          label="Home Address" 
-          helperText="Required"
-          variant="filled"
+      <Typography variant="body2" color="text.secondary" align="center" {...props}>
+        {'Copyright © '}
+        {new Date().getFullYear()}{' '}
+        teenageMutantNinjaCamelCase
+      </Typography>
+    );
+  }
+
+export default function SignIn() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      home: data.get('home'),
+      work: data.get('work'),
+    });
+  };
+
+  return (
+      <Container 
+        component="main"
+        maxWidth="xs"        
+        sx={{
+          bgcolor: 'background.paper',
+          boxShadow: 1,
+          borderRadius: 2,
+          p: 2,
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        <CssBaseline />
+        <Box
           sx={{
-            input: {
-               color: 'black',
-               "&::placeholder": {    // <----- Add this.
-                  opacity: 1,
-               },
-            },
-            label: { color: 'black' },
-          }} 
-          />
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            margin: 6,
+          }}
+        >
+          <Typography component="h1" variant="h5">
+            Ready to Ride?
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <HomeIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="home-address" 
+              label="Home Address"
+              name="Home Address"
+              autoComplete="street-address"
+              autoFocus
+              variant="filled"
+            />
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <WorkIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="street-address"
+              variant="filled"
+            />
+          </Box>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              href={`/map`}
+              sx={{ mt: 3, mb: 2 }}
+              endIcon={<DirectionsIcon />}
+            >
+              Generate route
+            </Button>
+          </Box>
+          <Copyright />
         </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <WorkIcon sx={{ color: 'black', mr: 1, my: 0.5 }} />
-          <TextField 
-          fullWidth
-          required
-          id="work-address" 
-          label="Work Address" 
-          helperText="Required"
-          variant="filled"
-          sx={{
-            input: {
-               color: 'black',
-               "&::placeholder": {    // <----- Add this.
-                  opacity: 1,
-               },
-            },
-            label: { color: 'black' }
-          }}  
-          />
-        </Box>
-      </Box>
-      <Button variant="contained" endIcon={<DirectionsIcon />} href={`/map`}>
-          Generate route
-      </Button>
-      <p>
-        Made in Calgary by teenageMutantNinjaCamelCase
-      </p>
-    </div>
-  </div>
-  )
+
+      </Container>
+  );
 }
-
-// import * as React from 'react';
-// import Button from '@mui/material/Button';
-// import TextField from '@mui/material/TextField';
-// import Dialog from '@mui/material/Dialog';
-// import DialogActions from '@mui/material/DialogActions';
-// import DialogContent from '@mui/material/DialogContent';
-// import DialogContentText from '@mui/material/DialogContentText';
-// import DialogTitle from '@mui/material/DialogTitle';
-
-// import Box from '@mui/material/Box';
-// import HomeIcon from '@mui/icons-material/Home';
-// import WorkIcon from '@mui/icons-material/Work';
-// import DirectionsIcon from '@mui/icons-material/Directions';
-
-// import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-// export default function App() {
-//   const [open] = React.useState(true);
-
-  // const darkTheme = createTheme({
-  //   palette: {
-  //     mode: 'dark',
-  //   },
-  // });
-
-//   return (
-//     // <ThemeProvider theme={darkTheme}>
-//     <div>
-//       <Dialog 
-//       open={open}
-//       >
-//         <DialogTitle>Ready to Ride?</DialogTitle>
-//         <DialogContent>
-//           <DialogContentText>
-//             Enter your home and work address below and we'll generate your route to park and bike to work. 
-//           </DialogContentText>
-//           <Box sx={{ '& > :not(style)': { m: 2 } }}>
-//           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-//           <HomeIcon sx={{ mr: 1, my: 1 }} />
-//           <TextField 
-//           fullWidth
-//           required
-//           id="home-address" 
-//           label="Home Address"
-//           helperText="" 
-//           variant="filled"
-//           />
-//         </Box>
-//         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-//           <WorkIcon sx={{ mr: 1, my: 1 }} />
-//           <TextField 
-//           fullWidth
-//           required
-//           id="work-address" 
-//           label="Work Address" 
-//           variant="filled"
-//           />
-//         </Box>
-//       </Box>
-//         </DialogContent>
-//         <DialogActions>
-//         <Button variant="contained" endIcon={<DirectionsIcon />}>Generate Route</Button>
-//         </DialogActions>
-//       </Dialog>
-//     </div>
-//   // </ThemeProvider>
-//   );
-// }
