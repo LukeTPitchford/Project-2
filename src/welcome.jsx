@@ -11,6 +11,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { SearchBox } from '@mapbox/search-js-react';
 
+function handleRetrieve(feature) {
+  console.log(`${JSON.stringify(feature)}`)
+  }
+
 function InputHome() {
   return (
       <SearchBox
@@ -20,6 +24,8 @@ function InputHome() {
           country: 'CA',
           proximity: '-114.0719,51.0447',
           }}
+        value=''
+        onRetrieve={handleRetrieve}
       >
         </SearchBox>
   );
@@ -34,6 +40,7 @@ function InputWork() {
           country: 'CA',
           proximity: '-114.0719,51.0447',
           }}
+        value=''  
       >
         </SearchBox>
   );
