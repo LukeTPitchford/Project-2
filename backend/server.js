@@ -2,8 +2,10 @@ import express, { request, response } from "express";
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
+
 import bikeParkingLocationsRouter from "./routes/bikeParkingLocations.js";
 import parknBikeSitesRouter from "./routes/parknBikeSites.js";
+import airQualityRouter from "./routes/airQuality.js";
 
 
 
@@ -15,11 +17,13 @@ app.use(express.json());
 
 dotenv.config();
 
-let db = await mongoose.connect(process.env.MONGO_URL);
+// let db = await mongoose.connect(process.env.MONGO_URL);
 
 app.use("/api/parkinglocations",bikeParkingLocationsRouter);
 
 app.use("/api/parknbikesites",parknBikeSitesRouter);
+
+app.use("/api/airquality", airQualityRouter);
 
 app.get("/test", (request,response) => {
 response.send("test endpoint working ")
