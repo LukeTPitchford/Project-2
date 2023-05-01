@@ -84,3 +84,42 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.news-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  font-size: 16px;
+  background: #599cda;
+  color: #73c2fb;
+  padding: 40px 64px;
+  display: flex;
+  box-shadow: 0 4px 40px -8px rgb(18, 66, 110);
+}
+    .hmove { display: flex; }
+    .hitem {
+      font-family: 'Press Start 2P', cursive;
+       flex-shrink: 0;
+       width: 20%;
+       text-align: center;
+       color: white;
+     }
+
+     .hwrap { overflow: hidden; }
+
+    @keyframes tickerh {
+      
+      0% { transform: translate3d( 120%, 0, 0); }
+      100% { transform: translate3d( -180%, 0, 0); }
+      
+    }
+
+     .hmove {
+
+      animation: tickerh linear 8s infinite;
+     }
+ 
+.hmove:hover {
+  animation-play-state: paused;
+}
