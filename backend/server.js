@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import bikeParkingLocationsRouter from "./routes/bikeParkingLocations.js";
 import parknBikeSitesRouter from "./routes/parknBikeSites.js";
 import airQualityRouter from "./routes/airQuality.js";
+import weatherRouter from "./routes/weather.js";
 
 
 
@@ -24,6 +25,8 @@ app.use("/api/parkinglocations",bikeParkingLocationsRouter);
 app.use("/api/parknbikesites",parknBikeSitesRouter);
 
 app.use("/api/airquality", airQualityRouter);
+
+app.use("/api/weather", weatherRouter);
 
 app.get("/test", (request,response) => {
 response.send("test endpoint working ")

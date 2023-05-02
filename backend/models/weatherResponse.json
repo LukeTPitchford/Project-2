@@ -1,0 +1,43 @@
+{
+    "coord": {
+        "lon": -114.0655,
+        "lat": 51.0461
+    },
+    "weather": [
+        {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 22.05,
+        "feels_like": 21.12,
+        "temp_min": 21.37,
+        "temp_max": 22.9,
+        "pressure": 1008,
+        "humidity": 31
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 7.72,
+        "deg": 20
+    },
+    "clouds": {
+        "all": 0
+    },
+    "dt": 1683055397,
+    "sys": {
+        "type": 2,
+        "id": 2007302,
+        "country": "CA",
+        "sunrise": 1683029265,
+        "sunset": 1683082716
+    },
+    "timezone": -21600,
+    "id": 5913490,
+    "name": "Calgary",
+    "cod": 200
+}
