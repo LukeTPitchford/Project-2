@@ -5,12 +5,12 @@ dotenv.config();
 
 const airQualityRouter = express.Router();
 
-airQualityRouter.get("/", async (req, res) => {
-  // let lat = req.params.lat;
-  // let lon = req.params.lon;
+airQualityRouter.get("/:lat/:lon", async (req, res) => {
+  let lat = req.params.lat;
+  let lon = req.params.lon;
 
   const weatherApi =
-    `http://api.openweathermap.org/geo/1.0/direct?q=Calgary,124&limit=1&appid=` +
+    `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=` +
     process.env.TOKEN;
   console.log(weatherApi);
   try {
@@ -20,7 +20,7 @@ airQualityRouter.get("/", async (req, res) => {
 
     console.log(result);
 
-    res.send(result[0]);
+    res.send(result);
   } catch (error) {
     console.log(error.message);
     res.status(500).send(error);
