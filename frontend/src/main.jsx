@@ -5,13 +5,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css';
-import './App.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Map from './map';
 import Welcome from './welcome';
-import Ticker from './Ticker.jsx'
-import './Ticker.css'
-import Stats from './Stats';
+import Ticker from './ticker.jsx';
+import './Ticker.css';
+import StatsCard from './statsoncard.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,10 +25,10 @@ const router = createBrowserRouter([
     path: "ticker",
     element: <Ticker />,
   },
-  // {
-  //   path:"stats",
-  //   element: <Stats />,
-  // }
+  {
+    path:"stats",
+    element: <StatsCard />,
+  }
 ]);
 
 
