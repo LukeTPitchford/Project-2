@@ -1,10 +1,10 @@
-import bicycle from './assets/gifs/bike-stationary-westward.gif';
-import flame from './assets/gifs/Fire-bicycle-project.gif';
-import carbon from './assets/gifs/carbonDioxide.gif';
-import odometer from './assets/gifs/odometer-cycle-app-project-2.gif';
-import money from './assets/gifs/money-coins-stack.gif';
-import weather from './assets/gifs/sun-rain-weather-pixel.gif';
-import factory from './assets/gifs/smoke-stack.gif';
+import bicycle from './gifs/bike.gif';
+import flame from './gifs/flame.gif';
+import carbon from './gifs/carbon.gif';
+import odometer from './gifs/odometer.gif';
+import money from './gifs/money.gif';
+import weather from './gifs/weather.gif';
+import factory from './gifs/factory.gif';
 import './ticker.css';
 
 

@@ -6,10 +6,9 @@ import {
 } from "react-router-dom";
 import './index.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import Map from './map';
-import Welcome from './welcome';
-import Ticker from './ticker.jsx';
-import './Ticker.css';
+import Map from './map/map';
+import Welcome from './welcome/welcome.jsx';
+import Ticker from './ticker/ticker.jsx';
 import StatsCard from './statsoncard.jsx';
 
 const router = createBrowserRouter([
