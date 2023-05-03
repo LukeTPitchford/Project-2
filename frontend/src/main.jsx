@@ -9,7 +9,7 @@ import './App.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Map from './map';
 import Welcome from './welcome';
-// import Stats from './Stats';
+import Stats from './Stats';
 
 const router = createBrowserRouter([
   {
@@ -20,10 +20,10 @@ const router = createBrowserRouter([
     path: "map",
     element: <Map />,
   },
-  // {
-  //   path:"stats",
-  //   element: <Stats />,
-  // }
+  {
+    path:"Stats",
+    element: <Stats />,
+  }
 ]);
 
 
@@ -31,10 +31,5 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
      <RouterProvider router={router} />
-  </React.StrictMode>,
-)
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-     <Map />
   </React.StrictMode>,
 )
