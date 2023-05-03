@@ -9,6 +9,7 @@ import './App.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Map from './map';
 import Welcome from './welcome';
+// import Stats from './Stats';
 
 const router = createBrowserRouter([
   {
@@ -19,14 +20,13 @@ const router = createBrowserRouter([
     path: "map",
     element: <Map />,
   },
+  // {
+  //   path:"stats",
+  //   element: <Stats />,
+  // }
 ]);
-import React from 'react';
-import ReactDOM from 'react-dom/client';
 
-import './index.css';
-import 'mapbox-gl/dist/mapbox-gl.css';
 
-import Map from './map';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
