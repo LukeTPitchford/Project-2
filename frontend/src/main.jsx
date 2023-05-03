@@ -9,6 +9,8 @@ import './App.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Map from './map';
 import Welcome from './welcome';
+import Ticker from './Ticker.jsx'
+import './Ticker.css'
 import Stats from './Stats';
 
 const router = createBrowserRouter([
@@ -21,9 +23,13 @@ const router = createBrowserRouter([
     element: <Map />,
   },
   {
-    path:"Stats",
-    element: <Stats />,
-  }
+    path: "ticker",
+    element: <Ticker />,
+  },
+  // {
+  //   path:"stats",
+  //   element: <Stats />,
+  // }
 ]);
 
 
