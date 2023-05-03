@@ -10,8 +10,7 @@ airQualityRouter.get("/:lat/:lon", async (req, res) => {
   let lon = req.params.lon;
 
   const weatherApi =
-    `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=` +
-    process.env.TOKEN;
+    `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=8f6a471383be62ec9d536bc70e89e157` 
   console.log(weatherApi);
   try {
     const result = await fetch(weatherApi).then(function (response) {
