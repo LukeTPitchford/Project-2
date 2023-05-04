@@ -18,6 +18,7 @@ app.use(express.json());
 
 dotenv.config();
 
+
 let db = await mongoose.connect(process.env.MONGO_URL);
 
 app.use("/api/parkinglocations",bikeParkingLocationsRouter);
