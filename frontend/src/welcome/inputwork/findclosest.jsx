@@ -28,8 +28,8 @@ export default function FindClosest (coordinates) {
   
     const closestName = bikeStalls.features[0].properties.name;
 
-    const closestCoordinates = [bikeStalls.features[0].geometry.coordinates[0],bikeStalls.features[0].geometry.coordinates[1]];
-    window.localStorage.setItem("bike", JSON.stringify(closestCoordinates));
+    const closestCoordinates = [bikeStalls.features[0].geometry.coordinates[0],bikeStalls.features[0].geometry.coordinates[0]];
+    window.localStorage.setItem("bikelocker", (closestCoordinates));
 
     const closest = [closestName, closestCoordinates];
   

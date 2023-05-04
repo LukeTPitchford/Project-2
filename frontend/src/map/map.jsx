@@ -63,8 +63,6 @@ const Map = () => {
     }
   }, [latLang]);
 
-
-
   return (
 <div>   
   <div>
