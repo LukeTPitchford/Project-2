@@ -8,6 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { SearchBox } from '@mapbox/search-js-react';
+import { useNavigate } from 'react-router-dom';
 
 function handleRetrieve(feature) {
   console.log(`${JSON.stringify(feature)}`)
@@ -55,6 +56,13 @@ function Copyright(props) {
   }
 
 export default function getAddresses() {
+
+  const navigate = useNavigate();
+
+
+  const generateRoute = ()=> { 
+    navigate('/routes')
+  }
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -101,6 +109,7 @@ export default function getAddresses() {
               <InputWork />
             </Box>
             <Button
+              onClick = { generateRoute }
               type="submit"
               fullWidth
               variant="contained"
