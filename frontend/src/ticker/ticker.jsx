@@ -42,7 +42,7 @@ function Ticker() {
                   <a href="ticker.html">
                     <img src={flame} height="60px" width="100px"></img>
                   </a>
-                  <div>Calories:</div>
+                  <div>Average Calories burned is:5 cal a min</div>
                 </div>
                 <div className="hitem">
                   <a href="ticker.html">
@@ -60,7 +60,7 @@ function Ticker() {
                   <a href="ticker.html">
                     <img src={money} height="60px" width="100px"></img>
                   </a>
-                  <div>Money Saved:</div>
+                  <div>Average Savings a month is:$488</div>
                 </div>
                 <div className="hitem">
                   <a href="ticker.html">
