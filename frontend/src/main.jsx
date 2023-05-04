@@ -10,6 +10,7 @@ import Map from './map/map';
 import Welcome from './welcome/welcome.jsx';
 import Ticker from './ticker/ticker.jsx';
 import StatsCard from './statsoncard.jsx';
+import Directions from './directions/directions.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path:"stats",
     element: <StatsCard />,
+  },
+  {
+    path:"directions",
+    element: <Directions />,
   }
 ]);
 

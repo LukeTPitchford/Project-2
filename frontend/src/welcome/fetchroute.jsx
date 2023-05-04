@@ -1,7 +1,7 @@
-const start = [0,1];
-const drive = [0,1];
-const bike = [0,1];
-const walk = [0,1];
+const start = window.localStorage.getItem("start");
+const drive = window.localStorage.getItem("drive");
+const bike = window.localStorage.getItem("bike");
+const walk = window.localStorage.getItem("start");
 
 const data = {
   'start': start,

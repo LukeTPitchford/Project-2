@@ -7,12 +7,8 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { SearchBox } from '@mapbox/search-js-react';
 import InputHome from './inputhome/inputhome.jsx';
 import InputWork from './inputwork/inputwork.jsx';
-import SayHello from './fetchroute.jsx'
-
-
 
 function Copyright(props) {
     return (
@@ -61,8 +57,8 @@ export default function Welcome() {
               <WorkIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
               <InputWork />
             </Box>
-            <Button
-              onClick={SayHello}
+              <Button
+              href="/directions"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
