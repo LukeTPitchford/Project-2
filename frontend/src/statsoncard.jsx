@@ -1,9 +1,9 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import Stats from './stats';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import Stats from "./Stats.jsx";
 
 const card = (
   <React.Fragment>
@@ -17,8 +17,9 @@ const card = (
 
 export default function StatsCard() {
   return (
-    <Box sx={{ 
-        bgcolor: 'background.paper',
+    <Box
+      sx={{
+        bgcolor: "background.paper",
         boxShadow: 1,
         borderRadius: 2,
         p: 2,
@@ -26,7 +27,8 @@ export default function StatsCard() {
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
-    }}>
+      }}
+    >
       <Card variant="outlined">{card}</Card>
     </Box>
   );
