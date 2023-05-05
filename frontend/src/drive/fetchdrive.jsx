@@ -32,7 +32,12 @@ useEffect(() => {
 }, [])
 return (
 
-  <Card>
+  <Card sx={{
+    width: '100%',
+    maxHeight: '100%',
+    bgcolor: 'background.paper',
+    overflow: 'auto',
+}}>
   <CardContent>
   <h3>DRIVING DIRECTIONS TO PARK N BIKE</h3>
     {directions.length > 0 && (

@@ -30,14 +30,20 @@ useEffect(() => {
 }, [])
 return (
 
-  <Card>
+  <Card
+  sx={{
+    width: '100%',
+    maxHeight: '100%',
+    bgcolor: 'background.paper',
+    overflow: 'auto',
+}}>
   <CardContent>
   <h3>WALKING DIRECTIONS TO WORK</h3>
     {directions.length > 0 && (
       <List
         sx={{
           width: '100%',
-          height: '100%',
+          maxHeight: '100%',
           bgcolor: 'background.paper',
           overflow: 'auto',
       }}>
