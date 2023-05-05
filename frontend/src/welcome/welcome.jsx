@@ -7,43 +7,8 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { SearchBox } from '@mapbox/search-js-react';
-import { useNavigate } from 'react-router-dom';
-
-function handleRetrieve(feature) {
-  console.log(`${JSON.stringify(feature)}`)
-  }
-
-function InputHome() {
-  return (
-      <SearchBox
-        accessToken="pk.eyJ1Ijoib2xseXNhbW0iLCJhIjoiY2xnNDhkNnBuMDNzMjNtcDdhdzFqcG9hNiJ9.06D2Ws_Figfp6Fg4neZSHA"
-        options={{
-          language: 'en',
-          country: 'CA',
-          proximity: '-114.0719,51.0447',
-          }}
-        value=''
-        onRetrieve={handleRetrieve}
-      >
-        </SearchBox>
-  );
-}
-
-function InputWork() {
-  return (
-      <SearchBox 
-        accessToken="pk.eyJ1Ijoib2xseXNhbW0iLCJhIjoiY2xnNDhkNnBuMDNzMjNtcDdhdzFqcG9hNiJ9.06D2Ws_Figfp6Fg4neZSHA"
-        options={{
-          language: 'en',
-          country: 'CA',
-          proximity: '-114.0719,51.0447',
-          }}
-        value=''  
-      >
-        </SearchBox>
-  );
-}
+import InputHome from './inputhome/inputhome.jsx';
+import InputWork from './inputwork/inputwork.jsx';
 
 function Copyright(props) {
     return (
@@ -55,23 +20,7 @@ function Copyright(props) {
     );
   }
 
-export default function getAddresses() {
-
-  const navigate = useNavigate();
-
-
-  const generateRoute = ()=> { 
-    navigate('/routes')
-  }
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      home: data.get('home'),
-      work: data.get('work'),
-    });
-  };
-
+export default function Welcome() {
   return (
       <Container 
         component="main"
@@ -99,7 +48,7 @@ export default function getAddresses() {
           <Typography component="h1" variant="h5" sx={{ padding: 1 }}>
             Ready to Ride?
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" noValidate sx={{ mt: 1 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', padding: 1 }}>
               <HomeIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
               <InputHome />
@@ -108,9 +57,8 @@ export default function getAddresses() {
               <WorkIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
               <InputWork />
             </Box>
-            <Button
-              onClick = { generateRoute }
-              type="submit"
+              <Button
+              href="/directions"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
