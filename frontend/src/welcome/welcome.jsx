@@ -1,14 +1,15 @@
 import * as React from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import HomeIcon from '@mui/icons-material/Home';
 import WorkIcon from '@mui/icons-material/Work';
 import Button from '@mui/material/Button';
 import DirectionsIcon from '@mui/icons-material/Directions';
-import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import InputHome from './inputhome/inputhome.jsx';
 import InputWork from './inputwork/inputwork.jsx';
+
 
 function Copyright(props) {
     return (
@@ -58,7 +59,7 @@ export default function Welcome() {
               <InputWork />
             </Box>
               <Button
-              href="/directions"
+              href="/routeplan"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}

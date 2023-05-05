@@ -21,8 +21,8 @@ export default function InputWork() {
       const closest = FindClosest(work);
       setClosest(closest);
       console.log(`My closest Bike Locker:${JSON.stringify(closest)}`)
-      window.localStorage.setItem("stalllng", (work[0]))
-      window.localStorage.setItem("stalllat", (work[1]))
+      window.localStorage.setItem("stalllng", (closest[0]))
+      window.localStorage.setItem("stalllat", (closest[1]))
     }
     return (
       <div>

@@ -7,14 +7,8 @@ import {
 import './index.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-import Map from './map/map.jsx';
 import Welcome from './welcome/welcome';
-import Ticker from './ticker/ticker.jsx';
-import './ticker//Ticker.css';
-// import StatsCard from './statsoncard.jsx';
-import Generateroutes from './generateroutes.jsx'
-import Directions from './directions/directions.jsx'
-import Viewer from './viewer.jsx'
+import RoutePlan from './routeplan.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,28 +16,8 @@ const router = createBrowserRouter([
     element: <Welcome />,
   },
   {
-    path: "map",
-    element: <Map />,
-  },
-  {
-    path: "ticker",
-    element: <Ticker />,
-  },
-  // {
-  //   path:"stats",
-  //   element: <StatsCard />,
-  // },
-  {
-    path: "/routes",
-    element: < Generateroutes/>,
-  },
-  {
-    path: "/directions",
-    element: < Directions/>,
-  },
-  {
-    path: "/viewer",
-    element: <Viewer/>,
+    path: "/routeplan",
+    element: <RoutePlan/>,
   }
 ]);
 

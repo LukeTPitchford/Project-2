@@ -1,40 +1,36 @@
 import * as React from "react";
+import Box from '@mui/material/Box';
 import Typography from "@mui/material/Typography";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ViewDrive from './drive/viewdrive.jsx'
+import ViewBike from './bike/viewbike.jsx'
+import ViewWalk from './walk/viewwalk.jsx'
 
-import { useRef, useEffect, useState } from "react";
-import "./map/map.css";
-import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
-import Map1 from "./map1";
+export default function RoutePlan() {
 
-import { parkNBikeLocations } from "./data.js";
-// import MapboxDirections from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
-mapboxgl.accessToken =
-  "pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g";
-
-function generateroutes() {
-
- 
-
-  
-  
   return (
     
-    
-      <div>
+    <Box sx={{ 
+      bgcolor: 'background.paper',
+      boxShadow: 1,
+      borderRadius: 2,
+      p: 2,
+      maxHeight: '100%',
+      maxWidth: '100%',
+  }}>
       <Accordion TransitionProps={{ unmountOnExit: true }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Your full Trip </Typography>
+          <h3>Drive to Park N Bike</h3>
         </AccordionSummary>
         <AccordionDetails>
-          <Map1 />
+          <ViewDrive />
         </AccordionDetails>
       </Accordion>
    
@@ -44,10 +40,10 @@ function generateroutes() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Drive to nearest Park & Ride </Typography>
+          <h3>Bike along the River Bikeways to Secure Storage</h3>
         </AccordionSummary>
         <AccordionDetails>
-          <Map1 />
+          <ViewBike />
         </AccordionDetails>
       </Accordion>
       <Accordion TransitionProps={{ unmountOnExit: true }}>
@@ -56,14 +52,12 @@ function generateroutes() {
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
-          <Typography>Ride down the river to safe parking</Typography>
+          <h3>Walk to work</h3>
         </AccordionSummary>
         <AccordionDetails>
-          <Map1 />
+          <ViewWalk />
         </AccordionDetails>
-      </Accordion>
-      
-    </div>
+      </Accordion> 
+    </Box>
   );
 }
-export default generateroutes;

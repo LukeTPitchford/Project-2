@@ -3,16 +3,16 @@ import Map, {Source, Layer} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './map.css';
 
-const start = [window.localStorage.getItem("homelng"),window.localStorage.getItem("homelat")];
-const end = [window.localStorage.getItem("parknbikelng"),window.localStorage.getItem("parknbikelat")];
+const start = [window.localStorage.getItem("stalllng"),window.localStorage.getItem("stalllat")];
+const end = [window.localStorage.getItem("worklng"),window.localStorage.getItem("worklat")];
 
-export default function Directions () {
+export default function WalkMap () {
 
   const [segments, setSegments] = useState([])
      
   const fetchDirections = () => {
     const accessToken = 'pk.eyJ1Ijoib2xseXNhbW0iLCJhIjoiY2xnNDhkNnBuMDNzMjNtcDdhdzFqcG9hNiJ9.06D2Ws_Figfp6Fg4neZSHA';
-    fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${accessToken}`)
+    fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${accessToken}`)
     .then(response => {
       return response.json()
     })
@@ -35,7 +35,7 @@ const routeLayer = {
   id: 'route',
   type: 'line',
   paint: {
-      'line-color': '#c77841',
+      'line-color': '#9FE2BF',
       'line-width': 5,
       'line-opacity': 0.75
   }
