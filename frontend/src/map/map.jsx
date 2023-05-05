@@ -1,75 +1,68 @@
-import React, { useRef, useEffect, useState } from "react";
-import mapboxgl from "mapbox-gl";
-import './map.css'; // eslint-disable-line import/no-webpack-loader-syntax
+import React, { useEffect, useState } from "react"
+import Map, {Source, Layer} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-mapboxgl.accessToken =
-  "pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g";
+import './map.css';
 
-const Map = () => {
-  const [latLang, setLatLang] = useState();
-  const[parkSiteslatLang, setparkSiteslatLang] = useState();
-  const map = useRef(null);
-  const [lng, setLng] = useState(-114.0719);
-  const [lat, setLat] = useState(51.0447);
-  const [zoom, setZoom] = useState(11.5);
+const start = [window.localStorage.getItem("homelng"),window.localStorage.getItem("homelat")];
+const end = [window.localStorage.getItem("parknbikelng"),window.localStorage.getItem("parknbikelat")];
 
-  mapboxgl.accessToken =
-    "pk.eyJ1IjoidGlua2VybWFzdGVyIiwiYSI6ImNsZ2gyYzhsdjBoZjQzZG8yOGc1cnB3NGMifQ.6g8lRoHDzt9fe57m9w1G3w";
+export default function Directions () {
 
-  useEffect(() => {
-    if (map.current) return; // initialize map only once
-    map.current = new mapboxgl.Map({
-      container: 'map',
-      style: "mapbox://styles/ollysamm/clgmqv6wz001f01pl6kx5gu1y",
-      center: [lng, lat],
-      zoom: zoom,
-    });
+  const [segments, setSegments] = useState([])
+     
+  const fetchDirections = () => {
+    const accessToken = 'pk.eyJ1Ijoib2xseXNhbW0iLCJhIjoiY2xnNDhkNnBuMDNzMjNtcDdhdzFqcG9hNiJ9.06D2Ws_Figfp6Fg4neZSHA';
+    fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${accessToken}`)
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      setSegments(data.routes[0].geometry.coordinates)
+       
+    })
+}
 
-    // const parknBikeSites = async () => {
-    //   const response = await fetch("/api/parknbikesites/all");
-    //   const parksitedata = await response.json();
-    //   // console.log(parksitedata);
-    //   const parkSiteslatLang = parksitedata.map((parksitedata) => {
-    //     return parksitedata.geometry.coordinates;
-    //   });
-    //   // console.log(parkSiteslatLang);
-    //   setparkSiteslatLang(parkSiteslatLang);
-    // };
-
-    // parknBikeSites();
-    
-
-    // const bikeParkingLocations = async () => {
-    //   const response = await fetch("/api/parkinglocations/all");
-    //   const data = await response.json();
-    //   const latLang = data.map((data) => {
-    //     return data.geometry.coordinates;
-    //   });
-    //   setLatLang(latLang);
-    // };
-    
-    // bikeParkingLocations();
-  }, []);
-
-  useEffect(() => {
-    for(let i = 0; i < parkSiteslatLang?.length; i++) {
-      new mapboxgl.Marker().setLngLat(parkSiteslatLang[i]).addTo(map.current);
-    }
-  }, [parkSiteslatLang]);
-
-  useEffect(() => {
-    for (let i = 0; i < latLang?.length; i++) {
-      new mapboxgl.Marker().setLngLat(latLang[i]).addTo(map.current);
-    }
-  }, [latLang]);
-
-  return (
-<div>   
-  <div>
-    <div id="map"/>
-  </div>
-</div>
-);
+const geojson = {
+  type: 'Feature',
+  properties: {},
+  geometry: {
+      type: 'LineString',
+      coordinates: segments
+  }
 };
 
-export default Map;
+const routeLayer = {
+  id: 'route',
+  type: 'line',
+  paint: {
+      'line-color': '#c77841',
+      'line-width': 5,
+      'line-opacity': 0.75
+  }
+}
+
+const [viewState, setViewState] = React.useState({
+  bounds: [[(start[0]),(start[1])],[(end[0]),(end[1])]],
+  fitBoundsOptions: {
+    padding: 80
+  }
+});
+
+useEffect(() => {
+  fetchDirections()
+}, [])
+return (
+
+  <Map
+    {...viewState}
+    style={{width: '66vw', height: '80vh'}}
+    mapStyle="mapbox://styles/ollysamm/clgmqv6wz001f01pl6kx5gu1y"
+    mapboxAccessToken="pk.eyJ1IjoibHVrZTY2NnoiLCJhIjoiY2xnZmppd2s2MDJlNTNsbW85eHppc3F0eiJ9.HQqrdoz9EbIevdT2-KdY5g"
+    >
+        <Source id="response" type="geojson" data={geojson}>
+            <Layer {...routeLayer} />
+        </Source>
+    </Map>
+
+  );
+}

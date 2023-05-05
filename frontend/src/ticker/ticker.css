@@ -4,26 +4,31 @@
   position: absolute;
   top: 0;
   min-width: 100vw;
+  max-height: 15vh;
   font-size: 16px;
   background: #599cda;
   color: #73c2fb;
   padding-top: 10px;
   padding-bottom: 10px;
-  display: flex;
+  align-items: center center;
+  display: inline-flex;
   box-shadow: 0 4px 40px -8px rgb(18, 66, 110);
 }
-    .hmove { display: flex; }
+    .hmove { display: inline-flex; }
     .hitem {
       font-family: 'Press Start 2P', cursive;
-      flex-shrink: 0;
+      flex-shrink: 25;
       width: 20%;
       text-align: center;
       color: white;
+      display: inline-flex;
+      align-items: center center;
      }
 
      .hwrap { 
       min-width: 100vw;
-      overflow: hidden; }
+      overflow: hidden;
+      display: inline-flex; }
 
     @keyframes tickerh {
       

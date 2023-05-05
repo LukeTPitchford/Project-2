@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import "./map.css";
+import "./map/map.css";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 
 function Map1() {

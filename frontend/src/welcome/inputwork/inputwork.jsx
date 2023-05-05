@@ -16,10 +16,13 @@ export default function InputWork() {
       const work = res.features[0].geometry.coordinates;
       setCoordinates(work);
       console.log(`My office coordinates:${JSON.stringify(work)}`)
-      window.localStorage.setItem("work", (work))
+      window.localStorage.setItem("worklng", (work[0]))
+      window.localStorage.setItem("worklat", (work[1]))
       const closest = FindClosest(work);
       setClosest(closest);
       console.log(`My closest Bike Locker:${JSON.stringify(closest)}`)
+      window.localStorage.setItem("stalllng", (work[0]))
+      window.localStorage.setItem("stalllat", (work[1]))
     }
     return (
       <div>

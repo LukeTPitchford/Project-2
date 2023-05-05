@@ -16,7 +16,8 @@ export default function InputHome() {
       const home = res.features[0].geometry.coordinates;
       setCoordinates(home);
       console.log(`My house coordinates:${JSON.stringify(home)}`)
-      window.localStorage.setItem("home", (home));
+      window.localStorage.setItem("homelng", (home[0]));
+      window.localStorage.setItem("homelat", (home[1]));
       const closest = FindClosest(home);
       setClosest(closest);
       console.log(`My closest Park N Bike:${JSON.stringify(closest)}`)

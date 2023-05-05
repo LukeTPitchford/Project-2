@@ -30,7 +30,9 @@ export default function FindClosest (coordinates) {
     const closestName = stores.features[0].properties.name;
 
     const closestCoordinates = [stores.features[0].geometry.coordinates[0],stores.features[0].geometry.coordinates[1]];
-    window.localStorage.setItem("parknbike", (closestCoordinates));
+    
+    window.localStorage.setItem("parknbikelng", (closestCoordinates[0]));
+    window.localStorage.setItem("parknbikelat", (closestCoordinates[1]));
 
     const closest = [closestName, closestCoordinates];
     
